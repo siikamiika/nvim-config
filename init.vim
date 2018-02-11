@@ -53,9 +53,14 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hdima/python-syntax'
 Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 filetype plugin indent on
 
 " styles
 colorscheme molokai
+
+" comment
+map <C-_> gcc
+vmap <C-_> gc
