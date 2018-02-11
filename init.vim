@@ -1,8 +1,29 @@
-" backup
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'hdima/python-syntax'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-commentary'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+
+" backup & save
 set backupdir=~/.cache/nvim/backup
 set dir=~/.cache/nvim/swap
 set backup
 set undofile
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>gv
+inoremap <C-S> <C-O>:update<CR>
 
 
 " commands
@@ -67,24 +88,6 @@ if has('mouse')
 endif
 
 
-" Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'hdima/python-syntax'
-Plugin 'tomasr/molokai'
-Plugin 'tpope/vim-commentary'
-Plugin 'ctrlpvim/ctrlp.vim'
-
-call vundle#end()
-filetype plugin indent on
-
-
 " styles
 colorscheme molokai
 
@@ -94,8 +97,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
+hi IndentGuidesOdd ctermbg=234
+hi IndentGuidesEven ctermbg=0
 
 
 " comment
