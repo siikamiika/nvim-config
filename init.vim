@@ -11,6 +11,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype plugin indent on
