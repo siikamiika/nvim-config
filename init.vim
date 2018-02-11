@@ -4,8 +4,11 @@ set dir=~/.cache/nvim/swap
 set backup
 set undofile
 
+
 " commands
 set history=50
+nmap ; :
+
 
 " display
 set ruler
@@ -16,9 +19,11 @@ set relativenumber
 syntax on
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+
 " search
 set incsearch
 set hlsearch
+
 
 " indentation
 set tabstop=4
@@ -26,21 +31,41 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" splits
+
+" tabs and splits
 set splitbelow
 set splitright
+nnoremap <C-t> :tabnew<CR>
+" close tab or window
+nnoremap <C-w> <C-w>q
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
+" move between splits
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+" move split around
+nnoremap <A-H> <C-w>H
+nnoremap <A-J> <C-w>J
+nnoremap <A-K> <C-w>K
+nnoremap <A-L> <C-w>L
+" move split to new tab
+nnoremap <A-t> <C-w>T
+" reopen closed file to a split
+nnoremap <A-T> :vs<bar>:b#<CR>
+" resize split
+nnoremap <silent> <C-A-h> :vertical resize -2<CR>
+nnoremap <silent> <C-A-j> :resize +2<CR>
+nnoremap <silent> <C-A-k> :resize -2<CR>
+nnoremap <silent> <C-A-l> :vertical resize +2<CR>
 
-" tabs
-map <C-t> :tabnew<CR>
-map <C-t> :tabnew<CR>
-map <C-w> :tabclose<CR>
-map <Tab> :tabnext<CR>
-map <S-Tab> :tabprevious<CR>
 
 " mouse
 if has('mouse')
     set mouse=a
 endif
+
 
 " Vundle
 filetype off
@@ -55,14 +80,14 @@ Plugin 'hdima/python-syntax'
 Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 filetype plugin indent on
 
+
 " styles
 colorscheme molokai
+
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -72,9 +97,7 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
+
 " comment
 map <C-_> gcc
 vmap <C-_> gc
-
-" ctrlp & fzf
-let g:ctrlp_cmd = 'Files'
