@@ -59,8 +59,3 @@ filetype plugin indent on
 
 " styles
 colorscheme molokai
-if has("gui_running")
-    set lines=60 columns=150
-    set guioptions-=m
-    set guioptions-=T
-endif
