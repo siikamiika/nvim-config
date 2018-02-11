@@ -25,6 +25,16 @@ noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>gv
 inoremap <C-S> <C-O>:update<CR>
 
+" navigation
+" cursor in middle when scrolling
+nnoremap <C-e> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
+" ...searching
+nnoremap n nzz
+nnoremap N Nzz
+
 
 " commands
 set history=50
