@@ -67,6 +67,8 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " search
 set incsearch
 set hlsearch
+set ignorecase
+set smartcase
 
 
 " indentation
@@ -74,6 +76,10 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+
+" clipboard
+set clipboard=unnamedplus
 
 
 " tabs and splits
