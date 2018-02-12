@@ -12,9 +12,10 @@ Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-" Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 filetype plugin indent on
@@ -43,6 +44,8 @@ nnoremap N Nzz
 
 " keybinds
 map <F8> :TagbarToggle<CR>
+map <A-e> :NERDTreeToggle<CR>
+map <A-E> :NERDTreeFind<CR>
 
 
 " commands
