@@ -12,7 +12,7 @@ Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'ludovicchabant/vim-gutentags'
+" Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 
@@ -124,3 +124,7 @@ hi IndentGuidesEven ctermbg=0
 " comment
 map <C-_> gcc
 vmap <C-_> gc
+
+
+" tagbar
+let g:tagbar_sort = 0
