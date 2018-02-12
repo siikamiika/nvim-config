@@ -12,6 +12,8 @@ Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 filetype plugin indent on
@@ -26,6 +28,7 @@ noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>gv
 inoremap <C-S> <C-O>:update<CR>
 
+
 " navigation
 " cursor in middle when scrolling
 nnoremap <C-e> <C-u>zz
@@ -35,6 +38,10 @@ nnoremap <C-b> <C-b>zz
 " ...searching
 nnoremap n nzz
 nnoremap N Nzz
+
+
+" keybinds
+map <F8> :TagbarToggle<CR>
 
 
 " commands
