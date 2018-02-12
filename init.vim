@@ -137,3 +137,7 @@ vmap <C-_> gc
 
 " tagbar
 let g:tagbar_sort = 0
+
+
+" ctrlp
+let g:ctrlp_match_current_file = 1
