@@ -50,6 +50,12 @@ nnoremap <C-b> <C-b>zz
 " ...searching
 nnoremap n nzz
 nnoremap N Nzz
+" horizontal scrolling
+nnoremap L zL
+nnoremap H zH
+" replacements for L/H (top/bottom)
+nnoremap K H
+nnoremap J L
 
 
 " keybinds
