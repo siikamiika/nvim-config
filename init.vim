@@ -106,8 +106,12 @@ set splitright
 nnoremap <C-t> :tabnew<CR>
 " close tab or window
 nnoremap <C-w> <C-w>q
+" move between tabs
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
+" move tabs
+nnoremap <A-Tab> :tabmove +1<CR>
+nnoremap <A-S-Tab> :tabmove -1<CR>
 " move between splits
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
