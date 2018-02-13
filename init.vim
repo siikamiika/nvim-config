@@ -5,10 +5,14 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'nanotech/jellybeans.vim'
+" Plugin 'tomasr/molokai'
+Plugin 'justinmk/molokai'
+
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hdima/python-syntax'
-Plugin 'tomasr/molokai'
+
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-commentary'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -19,6 +23,9 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/Tabmerge'
 Plugin 'w0rp/ale'
+Plugin 'itchyny/vim-cursorword'
+Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
 
 call vundle#end()
 filetype plugin indent on
