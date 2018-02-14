@@ -26,6 +26,7 @@ Plugin 'w0rp/ale'
 Plugin 'itchyny/vim-cursorword'
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
+Plugin 'Vimjas/vim-python-pep8-indent'
 
 call vundle#end()
 filetype plugin indent on
@@ -71,6 +72,8 @@ vnoremap // y/<C-r>"<CR>
 " commands
 set history=50
 nmap ; :
+nmap <A-r> :! urxvt -hold -e %:p<CR>
+nmap <A-R> :! urxvt -hold -e %:p
 
 
 " display
