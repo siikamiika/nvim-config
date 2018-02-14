@@ -64,10 +64,13 @@ map <A-e> :NERDTreeToggle<CR>
 map <A-E> :NERDTreeFind<CR>
 
 
+" for visual mode
+vnoremap // y/<C-r>"<CR>
+
+
 " commands
 set history=50
 nmap ; :
-nmap <A-r> :! urxvt -e %<CR>
 
 
 " display
@@ -77,6 +80,7 @@ set hlsearch
 set number
 set relativenumber
 set nowrap
+set list listchars=tab:\ \ ,trail:·,nbsp:·,precedes:<,extends:>
 syntax on
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
@@ -93,7 +97,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set list listchars=tab:\ \ ,trail:·,nbsp:·,precedes:<,extends:>
 
 
 " clipboard
@@ -163,3 +166,16 @@ let g:tagbar_sort = 0
 
 " ctrlp
 let g:ctrlp_match_current_file = 1
+
+
+" tabular
+" visual
+vmap ,t: :Tabularize /:\zs/l0r1<CR>
+vmap ,t, :Tabularize /,\zs/l0r1<CR>
+vmap ,t= :Tabularize /=<CR>
+vmap ,t? :Tabularize /
+" normal
+nmap ,t: :Tabularize /:\zs/l0r1<CR>
+nmap ,t, :Tabularize /,\zs/l0r1<CR>
+nmap ,t= :Tabularize /=<CR>
+nmap ,t? :Tabularize /
