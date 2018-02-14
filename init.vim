@@ -27,6 +27,7 @@ Plugin 'itchyny/vim-cursorword'
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'FooSoft/vim-argwrap'
 
 call vundle#end()
 filetype plugin indent on
@@ -84,6 +85,7 @@ set number
 set relativenumber
 set nowrap
 set list listchars=tab:\ \ ,trail:·,nbsp:·,precedes:<,extends:>
+set display+=uhex
 syntax on
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
@@ -182,3 +184,7 @@ nmap ,t: :Tabularize /:\zs/l0r1<CR>
 nmap ,t, :Tabularize /,\zs/l0r1<CR>
 nmap ,t= :Tabularize /=<CR>
 nmap ,t? :Tabularize /
+
+
+" argwrap
+nmap ,a :ArgWrap<CR>
