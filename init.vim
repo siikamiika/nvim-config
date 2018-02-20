@@ -42,6 +42,9 @@ noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>gv
 inoremap <C-S> <C-O>:update<CR>
 
+" exit
+nmap <A-Q> :mks!<CR>:qa!<CR>
+
 
 " navigation
 " cursor in middle when scrolling
@@ -72,7 +75,6 @@ vnoremap // y/<C-r>"<CR>
 
 " commands
 set history=50
-nmap ; :
 nmap <A-r> :! urxvt -hold -e %:p<CR>
 nmap <A-R> :! urxvt -hold -e %:p
 
@@ -175,16 +177,16 @@ let g:ctrlp_match_current_file = 1
 
 " tabular
 " visual
-vmap ,t: :Tabularize /:\zs/l0r1<CR>
-vmap ,t, :Tabularize /,\zs/l0r1<CR>
-vmap ,t= :Tabularize /=<CR>
-vmap ,t? :Tabularize /
+vmap <Space>t: :Tabularize /:\zs/l0r1<CR>
+vmap <Space>t, :Tabularize /,\zs/l0r1<CR>
+vmap <Space>t= :Tabularize /=<CR>
+vmap <Space>t? :Tabularize /
 " normal
-nmap ,t: :Tabularize /:\zs/l0r1<CR>
-nmap ,t, :Tabularize /,\zs/l0r1<CR>
-nmap ,t= :Tabularize /=<CR>
-nmap ,t? :Tabularize /
+nmap <Space>t: :Tabularize /:\zs/l0r1<CR>
+nmap <Space>t, :Tabularize /,\zs/l0r1<CR>
+nmap <Space>t= :Tabularize /=<CR>
+nmap <Space>t? :Tabularize /
 
 
 " argwrap
-nmap ,a :ArgWrap<CR>
+nmap <Space>a :ArgWrap<CR>
