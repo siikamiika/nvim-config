@@ -181,6 +181,7 @@ vmap <Space>t: :Tabularize /:\zs/l0r1<CR>
 vmap <Space>t, :Tabularize /,\zs/l0r1<CR>
 vmap <Space>t= :Tabularize /=<CR>
 vmap <Space>t? :Tabularize /
+vmap <Space>t<Space> :Tabularize /^.\{-}\>\s\+\zs/l1r0<CR>
 " normal
 nmap <Space>t: :Tabularize /:\zs/l0r1<CR>
 nmap <Space>t, :Tabularize /,\zs/l0r1<CR>
