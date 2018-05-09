@@ -144,9 +144,9 @@ nnoremap <silent> <C-A-l> :vertical resize +2<CR>
 
 
 " mouse
-if has('mouse')
-    set mouse=a
-endif
+" if has('mouse')
+"     set mouse=a
+" endif
 
 
 " styles
