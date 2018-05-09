@@ -61,6 +61,8 @@ nnoremap H zH
 " replacements for L/H (top/bottom)
 nnoremap K H
 nnoremap J L
+" next location
+nnoremap <C-k> <C-i>
 
 
 " keybinds
