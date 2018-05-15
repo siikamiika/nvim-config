@@ -14,11 +14,13 @@ Plugin 'vim-python/python-syntax'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-commentary'
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
+Plugin 'rbgrouleff/bclose.vim'
+Plugin 'francoiscabrol/ranger.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/Tabmerge'
@@ -45,6 +47,9 @@ inoremap <C-S> <C-O>:update<CR>
 " exit
 nmap <A-Q> :mks!<CR>:qa!<CR>
 
+" environment
+set shell=bash
+
 
 " navigation
 " cursor in middle when scrolling
@@ -67,8 +72,8 @@ nnoremap <C-k> <C-i>
 
 " keybinds
 map <F8> :TagbarToggle<CR>
-map <A-e> :NERDTreeToggle<CR>
-map <A-E> :NERDTreeFind<CR>
+" map <A-e> :NERDTreeToggle<CR>
+" map <A-E> :NERDTreeFind<CR>
 
 
 " for visual mode
@@ -116,6 +121,8 @@ set clipboard=unnamedplus
 set splitbelow
 set splitright
 nnoremap <C-t> :tabnew<CR>
+" new split
+nnoremap <C-n> :new<CR>
 " close tab or window
 nnoremap <C-w> <C-w>q
 " move between tabs
@@ -174,7 +181,11 @@ let g:tagbar_sort = 0
 
 
 " ctrlp
-let g:ctrlp_match_current_file = 1
+" let g:ctrlp_match_current_file = 1
+
+" ranger.vim
+:nmap <A-p> :RangerCurrentFileNewTab<CR>
+:nmap <C-p> :Ranger<CR>
 
 
 " tabular
