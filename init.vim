@@ -122,7 +122,8 @@ set splitbelow
 set splitright
 nnoremap <C-t> :tabnew<CR>
 " new split
-nnoremap <C-n> :new<CR>
+nnoremap <C-n> :vnew<CR>
+nnoremap <C-m> :new<CR>
 " close tab or window
 nnoremap <C-w> <C-w>q
 " move between tabs
@@ -163,6 +164,8 @@ colorscheme molokai
 
 
 " indent guides
+au TermOpen *  execute 'IndentGuidesDisable'
+au TermClose *  execute 'IndentGuidesEnable'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 " let g:indent_guides_guide_size = 1
@@ -182,6 +185,7 @@ let g:tagbar_sort = 0
 
 " ctrlp
 " let g:ctrlp_match_current_file = 1
+"
 
 " ranger.vim
 :nmap <A-p> :RangerCurrentFileNewTab<CR>
