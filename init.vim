@@ -45,18 +45,18 @@ inoremap <C-S> <C-O>:update<CR>
 " exit
 nmap <A-Q> :call DoExit()<CR>
 function! DoExit()
-    if g:confirmexit == 0 || confirm("Overwrite Session.vim?", "&y\n&N", 2) == 1
+    if g:confirmoverwrite == 0 || confirm("Overwrite Session.vim?", "&y\n&N", 2) == 1
         execute "mks!"
         execute "qa!"
     endif
 endfunction
 au VimEnter * call DecideSessionProtection()
 function! DecideSessionProtection()
-    let g:confirmexit = 0
+    let g:confirmoverwrite = 0
     let l:argv = split(readfile("/proc/".getpid()."/cmdline", "b")[0], "\0")
-    let l:hassess = index(systemlist("ls"), "Session.vim") != -1
-    if l:hassess && index(l:argv, "Session.vim") == -1
-        let g:confirmexit = 1
+    let l:sessionexists = index(systemlist("ls"), "Session.vim") != -1
+    if l:sessionexists && index(l:argv, "Session.vim") == -1
+        let g:confirmoverwrite = 1
     endif
 endfunction
 
@@ -65,14 +65,31 @@ set shell=bash
 
 
 " navigation
-" cursor in middle when scrolling
-nnoremap <C-e> <C-u>zz
-" also in visual mode
-vnoremap <C-e> <C-u>zz
-nnoremap <C-d> <C-d>zz
-nnoremap <C-f> <C-f>zz
-nnoremap <C-b> <C-b>zz
-" ...searching
+" space between cursor and up/down
+set scrolloff=5
+" scroll with cursor
+nnoremap <silent> <C-d> :call ScrollCursor('d', 1)<CR>
+nnoremap <silent> <C-u> :call ScrollCursor('u', 1)<CR>
+nnoremap <silent> <C-e> :call ScrollCursor('u', 1)<CR>
+nnoremap <silent> <A-d> :call ScrollCursor('d', 0)<CR>
+nnoremap <silent> <A-u> :call ScrollCursor('u', 0)<CR>
+nnoremap <silent> <A-e> :call ScrollCursor('u', 0)<CR>
+vnoremap <silent> <C-e> <C-u>
+function! ScrollCursor(dir, half)
+    let l:dir = a:dir == 'u' ? 'k' : 'j'
+    let l:height = winheight('%') / (a:half ? 2 : 1)
+    " fix issue with scrolloff by going a bit at a time
+    let l:motions = []
+    while l:height
+        let l:motion = l:height > 5 ? 5 : l:height
+        call add(l:motions, l:motion)
+        let l:height += -l:motion
+    endwhile
+    for m in l:motions
+        execute "normal ".m.l:dir
+    endfor
+endfunction
+" cursor in middle when searching
 nnoremap n nzz
 nnoremap N Nzz
 " horizontal scrolling
@@ -81,7 +98,7 @@ nnoremap H zH
 " replacements for L/H (top/bottom)
 nnoremap K H
 nnoremap J L
-" next location
+" next location (inverse of <C-o>)
 nnoremap <C-k> <C-i>
 
 
@@ -103,6 +120,9 @@ nmap <A-R> :! urxvt -hold -e %:p
 set ruler
 set showcmd
 set hlsearch
+set cursorline
+" some bug makes cursorline turn all syntax white without this
+au VimEnter * execute 'hi CursorLine ctermfg=none'
 set number
 set relativenumber
 set nowrap
