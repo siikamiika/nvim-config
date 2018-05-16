@@ -14,11 +14,9 @@ Plugin 'vim-python/python-syntax'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-commentary'
-" Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'scrooloose/nerdtree'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'francoiscabrol/ranger.vim'
 Plugin 'itchyny/lightline.vim'
@@ -74,8 +72,6 @@ nnoremap <C-k> <C-i>
 
 " keybinds
 map <F8> :TagbarToggle<CR>
-" map <A-e> :NERDTreeToggle<CR>
-" map <A-E> :NERDTreeFind<CR>
 
 
 " for visual mode
@@ -180,12 +176,6 @@ function! RestoreClosedFile()
 endfunction
 
 
-" mouse
-" if has('mouse')
-"     set mouse=a
-" endif
-
-
 " styles
 colorscheme molokai
 
@@ -209,10 +199,6 @@ vmap <C-_> gc
 " tagbar
 let g:tagbar_sort = 0
 
-
-" ctrlp
-" let g:ctrlp_match_current_file = 1
-"
 
 " ranger.vim
 :nmap <A-p> :tab split<CR>:Ranger<CR>
