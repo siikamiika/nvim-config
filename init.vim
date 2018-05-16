@@ -54,6 +54,8 @@ set shell=bash
 " navigation
 " cursor in middle when scrolling
 nnoremap <C-e> <C-u>zz
+" also in visual mode
+vnoremap <C-e> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-f> <C-f>zz
 nnoremap <C-b> <C-b>zz
@@ -123,7 +125,9 @@ set splitright
 nnoremap <C-t> :tabnew<CR>
 " new split
 nnoremap <C-n> :vnew<CR>
+nnoremap <A-n> :vsplit<CR>
 nnoremap <C-m> :new<CR>
+nnoremap <A-m> :split<CR>
 " close tab or window
 nnoremap <C-w> <C-w>q
 " move between tabs
@@ -142,15 +146,38 @@ nnoremap <A-H> <C-w>H
 nnoremap <A-J> <C-w>J
 nnoremap <A-K> <C-w>K
 nnoremap <A-L> <C-w>L
-" move split to new tab
+" move split to new tab and vice versa
 nnoremap <A-t> <C-w>T
+nnoremap <C-A-t> :Tabmerge<CR>
 " reopen closed file to a split
-nnoremap <A-T> :vs<bar>:b#<CR>
+nnoremap <A-T> :call RestoreClosedFile()<CR>
 " resize split
 nnoremap <silent> <C-A-h> :vertical resize -2<CR>
 nnoremap <silent> <C-A-j> :resize +2<CR>
 nnoremap <silent> <C-A-k> :resize -2<CR>
 nnoremap <silent> <C-A-l> :vertical resize +2<CR>
+" keep track of previously closed buffers
+let g:lastbufs = []
+function! UpdateClosedBuffers()
+    let l:closedbuf = expand('%p')
+    if l:closedbuf !~ '^term://' && l:closedbuf != '' && index(g:lastbufs, l:closedbuf) == -1
+        call add(g:lastbufs, l:closedbuf)
+    endif
+endfunction
+" also called when not closing a buffer, cleanup handled separately
+au BufLeave * call UpdateClosedBuffers()
+" remove entry for the previous tab
+au TabNewEntered * let g:lastbufs = g:lastbufs[:-2]
+function! RestoreClosedFile()
+    if len(g:lastbufs) != 0
+        let l:closedbuf = g:lastbufs[-1]
+        let g:lastbufs = g:lastbufs[:-2]
+        vnew
+        execute 'buffer ' . l:closedbuf
+        " remove entry for the previous buffer
+        let g:lastbufs = g:lastbufs[:-2]
+    endif
+endfunction
 
 
 " mouse
@@ -188,7 +215,7 @@ let g:tagbar_sort = 0
 "
 
 " ranger.vim
-:nmap <A-p> :RangerCurrentFileNewTab<CR>
+:nmap <A-p> :tab split<CR>:Ranger<CR>
 :nmap <C-p> :Ranger<CR>
 
 
