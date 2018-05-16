@@ -43,7 +43,22 @@ vnoremap <C-S> <C-C>:update<CR>gv
 inoremap <C-S> <C-O>:update<CR>
 
 " exit
-nmap <A-Q> :mks!<CR>:qa!<CR>
+nmap <A-Q> :call DoExit()<CR>
+function! DoExit()
+    if g:confirmexit == 0 || confirm("Overwrite Session.vim?", "&y\n&N", 2) == 1
+        execute "mks!"
+        execute "qa!"
+    endif
+endfunction
+au VimEnter * call DecideSessionProtection()
+function! DecideSessionProtection()
+    let g:confirmexit = 0
+    let l:argv = split(readfile("/proc/".getpid()."/cmdline", "b")[0], "\0")
+    let l:hassess = index(systemlist("ls"), "Session.vim") != -1
+    if l:hassess && index(l:argv, "Session.vim") == -1
+        let g:confirmexit = 1
+    endif
+endfunction
 
 " environment
 set shell=bash
@@ -181,8 +196,8 @@ colorscheme molokai
 
 
 " indent guides
-au TermOpen *  execute 'IndentGuidesDisable'
-au TermClose *  execute 'IndentGuidesEnable'
+au TermOpen * execute 'IndentGuidesDisable'
+au TermClose * execute 'IndentGuidesEnable'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 " let g:indent_guides_guide_size = 1
