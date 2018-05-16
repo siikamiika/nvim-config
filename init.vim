@@ -60,6 +60,7 @@ function! DecideSessionProtection()
     endif
 endfunction
 
+
 " environment
 set shell=bash
 
@@ -92,6 +93,8 @@ endfunction
 " cursor in middle when searching
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 " horizontal scrolling
 nnoremap L zL
 nnoremap H zH
@@ -119,7 +122,6 @@ nmap <A-R> :! urxvt -hold -e %:p
 " display
 set ruler
 set showcmd
-set hlsearch
 set cursorline
 " some bug makes cursorline turn all syntax white without this
 au VimEnter * execute 'hi CursorLine ctermfg=none'
@@ -160,7 +162,7 @@ nnoremap <A-n> :vsplit<CR>
 nnoremap <C-m> :new<CR>
 nnoremap <A-m> :split<CR>
 " close tab or window
-nnoremap <C-w> <C-w>q
+nnoremap <silent> <C-w> :call BeforeClosingWindow()<CR><C-w>q:call AfterClosingWindow()<CR>
 " move between tabs
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
@@ -180,33 +182,43 @@ nnoremap <A-L> <C-w>L
 " move split to new tab and vice versa
 nnoremap <A-t> <C-w>T
 nnoremap <C-A-t> :Tabmerge<CR>
-" reopen closed file to a split
-nnoremap <A-T> :call RestoreClosedFile()<CR>
+" reopen closed window
+nnoremap <A-T> :call RestoreClosedWindow()<CR>
 " resize split
 nnoremap <silent> <C-A-h> :vertical resize -2<CR>
 nnoremap <silent> <C-A-j> :resize +2<CR>
 nnoremap <silent> <C-A-k> :resize -2<CR>
 nnoremap <silent> <C-A-l> :vertical resize +2<CR>
-" keep track of previously closed buffers
-let g:lastbufs = []
-function! UpdateClosedBuffers()
-    let l:closedbuf = expand('%p')
-    if l:closedbuf !~ '^term://' && l:closedbuf != '' && index(g:lastbufs, l:closedbuf) == -1
-        call add(g:lastbufs, l:closedbuf)
+" keep track of previously closed windows
+let g:lastwindows = []
+function! BeforeClosingWindow()
+    let l:type = winnr('$') == 1
+    " if tab was closed, use it to do tabprev
+    let g:tabclosed = l:type && tabpagenr() != tabpagenr('$')
+    let l:win = expand('%p')
+    for i in range(2)
+        let l:idx = index(g:lastwindows, [l:win, i])
+        if l:idx != -1
+            call remove(g:lastwindows, l:idx)
+        endif
+    endfor
+    call add(g:lastwindows, [l:win, l:type])
+endfunction
+function! AfterClosingWindow()
+    if g:tabclosed
+        execute 'tabprevious'
     endif
 endfunction
-" also called when not closing a buffer, cleanup handled separately
-au BufLeave * call UpdateClosedBuffers()
-" remove entry for the previous tab
-au TabNewEntered * let g:lastbufs = g:lastbufs[:-2]
-function! RestoreClosedFile()
-    if len(g:lastbufs) != 0
-        let l:closedbuf = g:lastbufs[-1]
-        let g:lastbufs = g:lastbufs[:-2]
-        vnew
-        execute 'buffer ' . l:closedbuf
-        " remove entry for the previous buffer
-        let g:lastbufs = g:lastbufs[:-2]
+function! RestoreClosedWindow()
+    if len(g:lastwindows) != 0
+        let l:closed = g:lastwindows[-1]
+        let g:lastwindows = g:lastwindows[:-2]
+        if l:closed[1]
+            tabnew
+        else
+            vnew
+        endif
+        execute 'buffer ' . l:closed[0]
     endif
 endfunction
 
