@@ -80,15 +80,11 @@ function! ScrollCursor(dir, half)
     let l:dir = a:dir == 'u' ? 'k' : 'j'
     let l:height = winheight('%') / (a:half ? 2 : 1)
     " fix issue with scrolloff by going a bit at a time
-    let l:motions = []
     while l:height
         let l:motion = l:height > 5 ? 5 : l:height
-        call add(l:motions, l:motion)
-        let l:height += -l:motion
+        execute "normal ".l:motion.l:dir
+        let l:height -= l:motion
     endwhile
-    for m in l:motions
-        execute "normal ".m.l:dir
-    endfor
 endfunction
 " cursor in middle when searching
 nnoremap n nzz
