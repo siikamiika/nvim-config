@@ -176,8 +176,8 @@ nnoremap <A-J> <C-w>J
 nnoremap <A-K> <C-w>K
 nnoremap <A-L> <C-w>L
 " move split to new tab and vice versa
-nnoremap <C-Y> <C-w>T
-nnoremap <C-A-t> :Tabmerge<CR>
+nnoremap <C-y> <C-w>T
+nnoremap <C-A-y> :Tabmerge<CR>
 " reopen closed window
 nnoremap <A-T> :call RestoreClosedWindow()<CR>
 " resize split
