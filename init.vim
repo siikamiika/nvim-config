@@ -151,7 +151,7 @@ set clipboard=unnamedplus
 set splitbelow
 set splitright
 nnoremap <C-t> :tabnew<CR>
-nnoremap <C-y> :tab split<CR>
+nnoremap <A-t> :tab split<CR>
 " new split
 nnoremap <C-n> :vnew<CR>
 nnoremap <A-n> :vsplit<CR>
@@ -176,7 +176,7 @@ nnoremap <A-J> <C-w>J
 nnoremap <A-K> <C-w>K
 nnoremap <A-L> <C-w>L
 " move split to new tab and vice versa
-nnoremap <A-t> <C-w>T
+nnoremap <C-Y> <C-w>T
 nnoremap <C-A-t> :Tabmerge<CR>
 " reopen closed window
 nnoremap <A-T> :call RestoreClosedWindow()<CR>
