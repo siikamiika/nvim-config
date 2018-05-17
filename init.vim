@@ -20,8 +20,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'francoiscabrol/ranger.vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'mattn/emmet-vim'
+" Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/Tabmerge'
+Plugin 'kien/ctrlp.vim'
 Plugin 'w0rp/ale'
 Plugin 'itchyny/vim-cursorword'
 Plugin 'tpope/vim-surround'
@@ -111,8 +112,6 @@ vnoremap // y/<C-r>"<CR>
 
 " commands
 set history=50
-nmap <A-r> :! urxvt -hold -e %:p<CR>
-nmap <A-R> :! urxvt -hold -e %:p
 
 
 " display
@@ -120,7 +119,7 @@ set ruler
 set showcmd
 set cursorline
 " some bug makes cursorline turn all syntax white without this
-au VimEnter * execute 'hi CursorLine ctermfg=none'
+au VimEnter * execute 'hi CursorLine ctermfg=none ctermbg=233'
 set number
 set relativenumber
 set nowrap
@@ -152,6 +151,7 @@ set clipboard=unnamedplus
 set splitbelow
 set splitright
 nnoremap <C-t> :tabnew<CR>
+nnoremap <C-y> :tab split<CR>
 " new split
 nnoremap <C-n> :vnew<CR>
 nnoremap <A-n> :vsplit<CR>
@@ -242,10 +242,12 @@ vmap <C-_> gc
 " tagbar
 let g:tagbar_sort = 0
 
+" ctrlp
+let g:ctrlp_cmd = 'CtrlPBuffer'
+
 
 " ranger.vim
-:nmap <A-p> :tab split<CR>:Ranger<CR>
-:nmap <C-p> :Ranger<CR>
+nmap <A-p> :Ranger<CR>
 
 
 " tabular
