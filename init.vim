@@ -29,6 +29,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'FooSoft/vim-argwrap'
+Plugin 'ambv/black'
 
 call vundle#end()
 filetype plugin indent on
@@ -64,6 +65,10 @@ endfunction
 
 " environment
 set shell=bash
+
+
+" file
+set fileencodings=ucs-bom,utf-8,shift-jis,gbk,default,latin1
 
 
 " navigation
