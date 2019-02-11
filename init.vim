@@ -108,7 +108,7 @@ nnoremap <C-k> <C-i>
 
 
 " keybinds
-map <F8> :TagbarToggle<CR>
+map <F8> :TagbarOpenAutoClose<CR>
 
 
 " for visual mode
@@ -246,6 +246,7 @@ vmap <C-_> gc
 
 " tagbar
 let g:tagbar_sort = 0
+let g:tagbar_autofocus = 1
 
 " ctrlp
 let g:ctrlp_cmd = 'CtrlPBuffer'
