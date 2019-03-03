@@ -125,6 +125,7 @@ set showcmd
 set cursorline
 " some bug makes cursorline turn all syntax white without this
 au VimEnter * execute 'hi CursorLine ctermfg=none ctermbg=233'
+au VimEnter * execute 'hi CursorLine guifg=none guibg=233'
 set number
 set relativenumber
 set nowrap
@@ -132,6 +133,10 @@ set list listchars=tab:\ \ ,trail:·,nbsp:·,precedes:<,extends:>
 set display+=uhex
 syntax on
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+
+" font
+set guifont="Sarasa Term J:pixelsize=14"
 
 
 " search
