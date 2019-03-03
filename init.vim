@@ -29,7 +29,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'FooSoft/vim-argwrap'
-Plugin 'ambv/black'
+" Plugin 'ambv/black'
+Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-path'
 
 call vundle#end()
 filetype plugin indent on
@@ -280,3 +284,9 @@ nmap <Space>t? :Tabularize /
 
 " argwrap
 nmap <Space>a :ArgWrap<CR>
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
