@@ -104,9 +104,6 @@ nnoremap # #zz
 " horizontal scrolling
 nnoremap L zL
 nnoremap H zH
-" replacements for L/H (top/bottom)
-nnoremap K H
-nnoremap J L
 " next location (inverse of <C-o>)
 nnoremap <C-k> <C-i>
 
