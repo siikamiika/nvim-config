@@ -294,6 +294,6 @@ set completeopt=noinsert,menuone,noselect
 let g:ackprg = 'ag --vimgrep'
 nnoremap <A-f> :Ack! 
 function! AckClipboard()
-    execute printf('Ack! -Q -- "%s"', substitute(@", '\([%"\\]\)', '\\\1', 'g'))
+    execute printf('Ack! -Q -- "%s"', substitute(@", '\([%"\$\\]\)', '\\\1', 'g'))
 endfunction
 vnoremap <A-f> y:call AckClipboard()<CR>
