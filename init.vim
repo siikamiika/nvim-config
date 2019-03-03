@@ -34,6 +34,8 @@ Plugin 'ncm2/ncm2'
 Plugin 'roxma/nvim-yarp'
 Plugin 'ncm2/ncm2-bufword'
 Plugin 'ncm2/ncm2-path'
+Plugin 'mileszs/ack.vim'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -287,3 +289,7 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
+
+" the silver searcher
+let g:ackprg = 'ag --vimgrep'
+nnoremap <A-f> :Ack 
