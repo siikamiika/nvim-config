@@ -293,3 +293,4 @@ set completeopt=noinsert,menuone,noselect
 " the silver searcher
 let g:ackprg = 'ag --vimgrep'
 nnoremap <A-f> :Ack! 
+vnoremap <A-f> y:Ack! "<C-r>""<CR>
