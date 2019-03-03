@@ -151,6 +151,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+" preserve visual mode when changing indentation
+vnoremap < <gv
+vnoremap > >gv
 
 
 " clipboard
