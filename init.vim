@@ -30,11 +30,11 @@ Plugin 'godlygeek/tabular'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'FooSoft/vim-argwrap'
 " Plugin 'ambv/black'
-Plugin 'stephpy/vim-php-cs-fixer'
-Plugin 'roxma/nvim-yarp'
 Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
 Plugin 'ncm2/ncm2-bufword'
 Plugin 'ncm2/ncm2-path'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -105,15 +105,12 @@ nnoremap # #zz
 " horizontal scrolling
 nnoremap L zL
 nnoremap H zH
-" replacements for L/H (top/bottom)
-nnoremap K H
-nnoremap J L
 " next location (inverse of <C-o>)
 nnoremap <C-k> <C-i>
 
 
 " keybinds
-map <F8> :TagbarToggle<CR>
+map <F8> :TagbarOpenAutoClose<CR>
 
 
 " for visual mode
@@ -143,7 +140,6 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " font
 set guifont="Sarasa Term J:pixelsize=18"
 
-
 " search
 set incsearch
 set hlsearch
@@ -156,6 +152,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+" preserve visual mode when changing indentation
+vnoremap < <gv
+vnoremap > >gv
 
 
 " clipboard
@@ -256,6 +255,7 @@ vmap <C-_> gc
 
 " tagbar
 let g:tagbar_sort = 0
+let g:tagbar_autofocus = 1
 
 " ctrlp
 let g:ctrlp_cmd = 'CtrlPBuffer'
@@ -282,13 +282,16 @@ nmap <Space>t? :Tabularize /
 " argwrap
 nmap <Space>a :ArgWrap<CR>
 
-" php-cs-fixer
-nnoremap <silent><Space>p :call PhpCsFixerFixFile()<CR>
-
-" ncm2
-
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
+
+" the silver searcher
+let g:ackprg = 'ag --vimgrep'
+nnoremap <A-f> :Ack! 
+function! AckClipboard()
+    execute printf('Ack! -Q -- "%s"', substitute(@", '\([%"\$\\]\)', '\\\1', 'g'))
+endfunction
+vnoremap <A-f> y:call AckClipboard()<CR>
