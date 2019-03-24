@@ -29,7 +29,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'FooSoft/vim-argwrap'
-Plugin 'ambv/black'
+" Plugin 'ambv/black'
+Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'roxma/nvim-yarp'
+Plugin 'ncm2/ncm2'
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-path'
 
 call vundle#end()
 filetype plugin indent on
@@ -47,20 +52,20 @@ inoremap <C-S> <C-O>:update<CR>
 " exit
 nmap <A-Q> :call DoExit()<CR>
 function! DoExit()
-    if g:confirmoverwrite == 0 || confirm("Overwrite Session.vim?", "&y\n&N", 2) == 1
+    if confirm("Overwrite Session.vim?", "&y\n&N", 2) == 1
         execute "mks!"
         execute "qa!"
     endif
 endfunction
-au VimEnter * call DecideSessionProtection()
-function! DecideSessionProtection()
-    let g:confirmoverwrite = 0
-    let l:argv = split(readfile("/proc/".getpid()."/cmdline", "b")[0], "\0")
-    let l:sessionexists = index(systemlist("ls"), "Session.vim") != -1
-    if l:sessionexists && index(l:argv, "Session.vim") == -1
-        let g:confirmoverwrite = 1
-    endif
-endfunction
+" au VimEnter * call DecideSessionProtection()
+" function! DecideSessionProtection()
+"     let g:confirmoverwrite = 0
+"     let l:argv = split(readfile("/proc/".getpid()."/cmdline", "b")[0], "\0")
+"     let l:sessionexists = index(systemlist("ls"), "Session.vim") != -1
+"     if l:sessionexists && index(l:argv, "Session.vim") == -1
+"         let g:confirmoverwrite = 1
+"     endif
+" endfunction
 
 
 " environment
@@ -125,6 +130,7 @@ set showcmd
 set cursorline
 " some bug makes cursorline turn all syntax white without this
 au VimEnter * execute 'hi CursorLine ctermfg=none ctermbg=233'
+au VimEnter * execute 'hi CursorLine guifg=none guibg=233'
 set number
 set relativenumber
 set nowrap
@@ -132,6 +138,10 @@ set list listchars=tab:\ \ ,trail:·,nbsp:·,precedes:<,extends:>
 set display+=uhex
 syntax on
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+
+" font
+set guifont="Sarasa Term J:pixelsize=18"
 
 
 " search
@@ -271,3 +281,14 @@ nmap <Space>t? :Tabularize /
 
 " argwrap
 nmap <Space>a :ArgWrap<CR>
+
+" php-cs-fixer
+nnoremap <silent><Space>p :call PhpCsFixerFixFile()<CR>
+
+" ncm2
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
