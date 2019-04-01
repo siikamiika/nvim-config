@@ -173,6 +173,15 @@ nnoremap <C-n> :vnew<CR>
 nnoremap <A-n> :vsplit<CR>
 nnoremap <C-m> :new<CR>
 nnoremap <A-m> :split<CR>
+" terminal
+nnoremap <C-A-n> :vnew<CR>:term fish<CR>i
+nnoremap <C-A-m> :new<CR>:term fish<CR>i
+tmap <C-A-n> <C-\><C-n>:vnew<CR>:term fish<CR>i
+tmap <C-A-m> <C-\><C-n>:new<CR>:term fish<CR>i
+tmap <A-h> <C-\><C-n><A-h>
+tmap <A-j> <C-\><C-n><A-j>
+tmap <A-k> <C-\><C-n><A-k>
+tmap <A-l> <C-\><C-n><A-l>
 " close tab or window
 nnoremap <silent> <C-w> :call BeforeClosingWindow()<CR><C-w>q:call AfterClosingWindow()<CR>
 " move between tabs
