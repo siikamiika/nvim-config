@@ -53,9 +53,11 @@ inoremap <C-S> <C-O>:update<CR>
 " exit
 nmap <A-Q> :call DoExit()<CR>
 function! DoExit()
-    if g:confirmoverwrite == 0 || confirm("Overwrite Session.vim?", "&y\n&N", 2) == 1
-        execute "mks!"
-        execute "qa!"
+    if len(filter(map(getbufinfo(), 'v:val.changed'), 'v:val')) == 0 || confirm("Discard changes?", "&y\n&N", 2) == 1
+        if g:confirmoverwrite == 0 || confirm("Overwrite Session.vim?", "&y\n&N", 2) == 1
+            execute "mks!"
+            execute "qa!"
+        endif
     endif
 endfunction
 au VimEnter * call DecideSessionProtection()
