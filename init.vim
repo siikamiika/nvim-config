@@ -121,7 +121,7 @@ vnoremap // y/<C-r>"<CR>
 
 
 " commands
-set history=50
+set history=100
 
 
 " display
