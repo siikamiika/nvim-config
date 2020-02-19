@@ -310,9 +310,9 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
 " the silver searcher
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'rg --vimgrep --smart-case'
 nnoremap <A-f> :Ack! 
 function! AckClipboard()
-    execute printf('Ack! -Q -- "%s"', substitute(@", '\([%"\$\\]\)', '\\\1', 'g'))
+    execute printf('Ack! -F -- "%s"', substitute(@", '\([%"\$\\]\)', '\\\1', 'g'))
 endfunction
 vnoremap <A-f> y:call AckClipboard()<CR>
