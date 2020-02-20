@@ -14,7 +14,7 @@ Plugin 'vim-python/python-syntax'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-commentary'
-Plugin 'airblade/vim-gitgutter'
+" Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rbgrouleff/bclose.vim'
@@ -258,6 +258,12 @@ endfunction
 colorscheme molokai
 
 
+" linting
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+
+
 " indent guides
 au TermOpen * execute 'IndentGuidesDisable'
 au TermClose * execute 'IndentGuidesEnable'
@@ -309,7 +315,6 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
-" the silver searcher
 let g:ackprg = 'rg --vimgrep --smart-case'
 nnoremap <A-f> :Ack! 
 function! AckClipboard()
