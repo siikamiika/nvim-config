@@ -39,7 +39,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'siikamiika/php.vim'
 Plugin 'jwalton512/vim-blade'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'jparise/vim-graphql'
+" Plugin 'jparise/vim-graphql'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'MaxMellon/vim-jsx-pretty'
 
