@@ -36,7 +36,10 @@ Plugin 'FooSoft/vim-argwrap'
 " Plugin 'ncm2/ncm2-path'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'mileszs/ack.vim'
+Plugin 'siikamiika/php.vim'
 Plugin 'jwalton512/vim-blade'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'jparise/vim-graphql'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'MaxMellon/vim-jsx-pretty'
 
@@ -141,6 +144,7 @@ set nowrap
 set list listchars=tab:\ \ ,trail:·,nbsp:·,precedes:<,extends:>
 set display+=uhex
 syntax on
+set lazyredraw
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 
