@@ -18,7 +18,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rbgrouleff/bclose.vim'
-Plugin 'francoiscabrol/ranger.vim'
+Plugin 'siikamiika/ranger.vim'
 Plugin 'itchyny/lightline.vim'
 " Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/Tabmerge'
@@ -30,11 +30,19 @@ Plugin 'godlygeek/tabular'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'FooSoft/vim-argwrap'
 " Plugin 'ambv/black'
-Plugin 'ncm2/ncm2'
-Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2-bufword'
-Plugin 'ncm2/ncm2-path'
+" Plugin 'ncm2/ncm2'
+" Plugin 'roxma/nvim-yarp'
+" Plugin 'ncm2/ncm2-bufword'
+" Plugin 'ncm2/ncm2-path'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'mileszs/ack.vim'
+Plugin 'siikamiika/php.vim'
+Plugin 'jwalton512/vim-blade'
+Plugin 'editorconfig/editorconfig-vim'
+" Plugin 'jparise/vim-graphql'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'MaxMellon/vim-jsx-pretty'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -134,11 +142,13 @@ set nowrap
 set list listchars=tab:\ \ ,trail:·,nbsp:·,precedes:<,extends:>
 set display+=uhex
 syntax on
+set lazyredraw
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 
 " font
-set guifont="Sarasa Term J:pixelsize=18"
+set guifont="Sarasa Term J:pixelsize=14"
+
 
 " search
 set incsearch
@@ -306,10 +316,12 @@ nmap <Space>t? :Tabularize /
 nmap <Space>a :ArgWrap<CR>
 
 " enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+" autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+" set completeopt=noinsert,menuone,noselect
+
+let g:deoplete#enable_at_startup = 1
 
 let g:ackprg = 'rg --vimgrep --smart-case'
 nnoremap <A-f> :Ack! 
