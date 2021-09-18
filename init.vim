@@ -34,7 +34,7 @@ Plugin 'FooSoft/vim-argwrap'
 " Plugin 'roxma/nvim-yarp'
 " Plugin 'ncm2/ncm2-bufword'
 " Plugin 'ncm2/ncm2-path'
-Plugin 'Shougo/deoplete.nvim'
+" Plugin 'Shougo/deoplete.nvim'
 Plugin 'mileszs/ack.vim'
 Plugin 'siikamiika/php.vim'
 Plugin 'jwalton512/vim-blade'
@@ -42,6 +42,7 @@ Plugin 'editorconfig/editorconfig-vim'
 " Plugin 'jparise/vim-graphql'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'MaxMellon/vim-jsx-pretty'
+Plugin 'neoclide/coc.nvim'
 
 
 call vundle#end()
@@ -323,7 +324,7 @@ nmap <Space>a :ArgWrap<CR>
 " IMPORTANT: :help Ncm2PopupOpen for more information
 " set completeopt=noinsert,menuone,noselect
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 let g:ackprg = 'rg --vimgrep --smart-case'
 nnoremap <A-f> :Ack! 
