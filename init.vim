@@ -5,8 +5,6 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" Plugin 'nanotech/jellybeans.vim'
-" Plugin 'tomasr/molokai'
 Plugin 'justinmk/molokai'
 
 Plugin 'jelera/vim-javascript-syntax'
@@ -14,27 +12,20 @@ Plugin 'vim-python/python-syntax'
 
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-commentary'
-" Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'siikamiika/ranger.vim'
 Plugin 'itchyny/lightline.vim'
-" Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/Tabmerge'
-Plugin 'kien/ctrlp.vim'
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 Plugin 'itchyny/vim-cursorword'
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'FooSoft/vim-argwrap'
 " Plugin 'ambv/black'
-" Plugin 'ncm2/ncm2'
-" Plugin 'roxma/nvim-yarp'
-" Plugin 'ncm2/ncm2-bufword'
-" Plugin 'ncm2/ncm2-path'
-" Plugin 'Shougo/deoplete.nvim'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'mileszs/ack.vim'
 Plugin 'siikamiika/php.vim'
 Plugin 'jwalton512/vim-blade'
@@ -42,7 +33,6 @@ Plugin 'editorconfig/editorconfig-vim'
 " Plugin 'jparise/vim-graphql'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'MaxMellon/vim-jsx-pretty'
-Plugin 'neoclide/coc.nvim'
 
 
 call vundle#end()
@@ -291,9 +281,6 @@ vmap <C-_> gc
 let g:tagbar_sort = 0
 let g:tagbar_autofocus = 1
 
-" ctrlp
-let g:ctrlp_cmd = 'CtrlPBuffer'
-
 
 " ranger.vim
 nmap <A-p> :Ranger<CR>
@@ -316,13 +303,7 @@ nmap <Space>t? :Tabularize /
 " argwrap
 nmap <Space>a :ArgWrap<CR>
 
-" enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANT: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
-
-" let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 let g:ackprg = 'rg --vimgrep --smart-case'
 nnoremap <A-f> :Ack! 
