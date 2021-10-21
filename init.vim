@@ -265,8 +265,10 @@ function LightlineTabname(n)
     let l:parts = split(bufname(l:buflist[l:winnr - 1]), '/')
     if len(l:parts) > 1
         return l:parts[-2] . '/' . l:parts[-1]
-    else
+    elseif len(l:parts) == 1
         return l:parts[0]
+    else
+        return '[No Name]'
     endif
 endfunction
 
