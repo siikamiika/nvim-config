@@ -251,6 +251,26 @@ function DeleteHiddenBuffers()
 endfunction
 
 
+" tab title
+let g:lightline = {
+      \ 'tab_component_function': {
+      \   'filename': 'LightlineTabname'
+      \  }
+      \ }
+function LightlineTabname(n)
+    let l:buflist = tabpagebuflist(a:n)
+    let l:winnr = tabpagewinnr(a:n)
+    let l:parts = split(bufname(l:buflist[l:winnr - 1]), '/')
+    if len(l:parts) > 1
+        return l:parts[-2] . '/' . l:parts[-1]
+    elseif len(l:parts) == 1
+        return l:parts[0]
+    else
+        return '[No Name]'
+    endif
+endfunction
+
+
 " styles
 colorscheme molokai
 
