@@ -61,7 +61,8 @@ endfunction
 au VimEnter * call DecideSessionProtection()
 function! DecideSessionProtection()
     let g:confirmoverwrite = 0
-    let l:argv = split(readfile("/proc/".getpid()."/cmdline", "b")[0], "\0")
+    "let l:argv = split(readfile("/proc/".getpid()."/cmdline", "b")[0], "\0")
+    let l:argv = split(trim(system("ps -o command ".getpid()." | tail -n1")), " ")
     let l:sessionexists = index(systemlist("ls"), "Session.vim") != -1
     if l:sessionexists && index(l:argv, "Session.vim") == -1
         let g:confirmoverwrite = 1
