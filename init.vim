@@ -298,6 +298,8 @@ hi IndentGuidesEven ctermbg=235
 " comment
 map <C-_> gcc
 vmap <C-_> gc
+map <C-/> gcc
+vmap <C-/> gc
 
 
 " tagbar
