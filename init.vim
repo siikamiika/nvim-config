@@ -191,7 +191,9 @@ nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
 " move tabs
 nnoremap <A-Tab> :tabmove +1<CR>
+nnoremap <A-`> :tabmove +1<CR>
 nnoremap <A-S-Tab> :tabmove -1<CR>
+nnoremap <A-S-`> :tabmove -1<CR>
 " move between splits
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
