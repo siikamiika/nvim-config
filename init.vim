@@ -33,6 +33,7 @@ Plugin 'editorconfig/editorconfig-vim'
 " Plugin 'jparise/vim-graphql'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'MaxMellon/vim-jsx-pretty'
+Plugin 'ojroques/vim-oscyank'
 
 
 call vundle#end()
@@ -163,6 +164,7 @@ vnoremap > >gv
 
 " clipboard
 set clipboard=unnamedplus
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
 
 
 " tabs and splits
